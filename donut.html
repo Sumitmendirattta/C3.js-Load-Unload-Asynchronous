@@ -1,0 +1,45 @@
+<html>
+  <head>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.9/c3.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.9/c3.js"></script>
+<script >
+function loadImage() {
+  var chart = c3.generate({
+      data: {
+         
+          columns: [
+              ['January', 30, 200, 100, 400, 150, 250],
+              ['February', 130, 100, 140, 200, 150, 50]
+          ],
+          type: 'donut',
+          onclick: function(e) {
+              chart.unload({
+                  ids: 'February',
+                  done: function() {
+                      chart.load({
+                          columns: [
+                              ["January", 30, 200, 100, 400, 150, 250],
+                              ["Sales1", 130],
+                              ["Sales2", 100],
+                              ["Sales3", 140],
+                              ["Sales4", 200],
+                              ["Sales5", 150],
+                              ["Sales6", 50]
+                          ]
+                      });
+                  }
+              });
+          },
+          
+      }
+  });
+}
+</script>
+  </head>
+  <body onload="loadImage()">
+   <div align="center" class="chart">
+    <div align="center" id="chart" class="c3" style=" max-height: 280px; position: relative;"></div>
+</div>
+  </body>
+</html>
